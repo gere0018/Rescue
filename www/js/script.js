@@ -20,7 +20,7 @@ var app1_gere0018 = {
       toggleMenuIcon = document.querySelector("#toggle-menu");
         if(app1_gere0018.detectTouchSupport( )){
             toggleMenuIcon.addEventListener("touchend", app1_gere0018.handleTouch);
-        }
+         }
        toggleMenuIcon.addEventListener("click", app1_gere0018.showMenu);
 
 
@@ -42,9 +42,10 @@ var app1_gere0018 = {
 	   for(var i=0;i<numLinks; i++){
            if(app1_gere0018.detectTouchSupport( )){
                 links[i].addEventListener("touchend", app1_gere0018.handleTouch, false);
-            }else{
-           links[i].addEventListener("click", app1_gere0018.handleNav, false);
             }
+      //must register event listener on click event even if touch is supported.handletouch will transform touch into a click, but we still need to attach event listener to it with line below.
+           links[i].addEventListener("click", app1_gere0018.handleNav, false);
+
        }
        window.addEventListener("popstate", app1_gere0018.browserBackButton, false);
         //loading the first page with url=null
@@ -84,8 +85,9 @@ var app1_gere0018 = {
                   pages[i].className = "activePage";
                   pages[i].classList.add("pt-page-moveFromBottomFade");
                   if(pages[i].id == "location"){
+                  console.log("id==location");
                   app1_gere0018.setLocation();
-              }
+                  }
                 history.pushState(null, null, "#" + url);
               }else{
                   var classes = pages[i].getAttribute("class");
