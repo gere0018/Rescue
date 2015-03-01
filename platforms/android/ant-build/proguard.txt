@@ -1,0 +1,3 @@
+# view AndroidManifest.xml #generated:6
+-keep class ca.edumedia.gere0018.rescueApp.CordovaApp { <init>(...); }
+
