@@ -42,7 +42,10 @@ body {
   transition: all 0.3s ease; }
 
 .pushMenuToLeft {
-  left: -150px; }
+  left: -175px; }
+  @media screen and (min-width: 650px) {
+    .pushMenuToLeft {
+      left: 0; } }
 
 .appTitle {
   background-color: #FCEC5D;
@@ -55,7 +58,7 @@ body {
     font-size: 1.7rem;
     color: #444;
     letter-spacing: 2px; }
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 650px) {
       .appTitle h1 {
         display: inline;
         width: 80%;
@@ -70,7 +73,7 @@ body {
     opacity: 0; }
   #toggle-menu #line3 {
     opacity: 1; }
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 650px) {
     #toggle-menu {
       display: none; } }
 
@@ -80,11 +83,10 @@ body {
   opacity: 0; }
 
 .verticalMenu {
-  display: block;
   position: fixed;
-  width: 150px;
+  width: 175px;
   height: 100%;
-  right: -150px;
+  right: -175px;
   top: 4.5rem;
   z-index: 900;
   -webkit-transition: all 0.3s ease;
@@ -99,12 +101,9 @@ body {
     text-align: center;
     font-size: 1.5rem;
     font-family: "Georgia", cursive; }
-  .verticalMenu [href="#location"].button {
-    border-top: 1px solid #444;
-    border-bottom: 1px solid #444; }
   .verticalMenu .activeTab {
     background-color: #FBF8D3; }
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 650px) {
     .verticalMenu {
       display: none; } }
 
@@ -120,27 +119,24 @@ body {
     list-style: none;
     overflow: hidden;
     margin: 0;
-    height: 100%;
+    background-color: #FBF8D3;
     width: 100%; }
   .navBar li {
     float: left;
-    height: 100%;
+    height: 3rem;
     width: 33.33%; }
   .navBar .button {
     color: #484848;
     background-color: #C8C5A8;
     display: block;
-    height: 100%;
+    height: 3rem;
     text-decoration: none;
     text-align: center;
     font-size: 1.5rem;
     font-family: "Georgia", cursive; }
-  .navBar [href="#location"].button {
-    border-left: 1px solid #7C7A68;
-    border-right: 1px solid #7C7A68; }
   .navBar .button.activeTab {
     background-color: #FBF8D3; }
-  @media screen and (min-width: 500px) {
+  @media screen and (min-width: 650px) {
     .navBar {
       display: block; } }
 
@@ -235,7 +231,6 @@ svg {
   position: fixed;
   width: 100%;
   bottom: 0;
-  margin-top: 500px;
   height: 60px;
   z-index: 1000; }
   .footer P {

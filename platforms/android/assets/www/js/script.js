@@ -1,18 +1,18 @@
 var app1_gere0018 = {
-    page: [],
-    numPages: 0,
-    links: [],
-    numLinks: 0,
-    toggleMenuIcon: "",
-    initialize: function () {
+    page:[],
+    numPages:0,
+    links:[],
+    numLinks:0,
+    toggleMenuIcon:"",
+    initialize: function() {
         app1_gere0018.bindEvents();
     },
-    bindEvents: function () {
+    bindEvents: function() {
       document.addEventListener('deviceready', app1_gere0018.onDeviceReady, false);
       document.addEventListener("DOMContentLoaded", app1_gere0018.onDeviceReady, false);
     },
     onDeviceReady: function() {
-    app1_gere0018.receivedEvent('deviceready');
+      app1_gere0018.receivedEvent('deviceready');
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -20,52 +20,55 @@ var app1_gere0018 = {
       toggleMenuIcon = document.querySelector("#toggle-menu");
         if(app1_gere0018.detectTouchSupport( )){
             toggleMenuIcon.addEventListener("touchend", app1_gere0018.handleTouch);
-        }
+         }
        toggleMenuIcon.addEventListener("click", app1_gere0018.showMenu);
 
-        //change toggle menu icon to an x shape when clicked
+
     },
     showMenu:function(){
+        //change toggle menu icon to an x shape when clicked
         toggleMenuIcon.classList.toggle("x-toggle-menu");
-       var menu = document.querySelector(".verticalMenu");
+        var verticalMenu = document.querySelector(".verticalMenu");
+        //change class of body to allow the push transition.
         document.body.classList.toggle("pushMenuToLeft");
-        menu.classList.toggle("OpenverticalMenu");
+       verticalMenu.classList.toggle("OpenverticalMenu");
     },
     prepareNavigation:function(){
        pages = document.querySelectorAll('[data-role="page"]');
 	   numPages = pages.length;
 	   links = document.querySelectorAll(".button");
 	   numLinks = links.length;
+        //looping through my links and adding touch and click events
 	   for(var i=0;i<numLinks; i++){
            if(app1_gere0018.detectTouchSupport( )){
-               //ask Steve how our shopping app worked without touch event??????
-            links[i].addEventListener("touchend", app1_gere0018.handleTouch, false);
+                links[i].addEventListener("touchend", app1_gere0018.handleTouch, false);
             }
-            links[i].addEventListener("click", app1_gere0018.handleNav, false);
-            }
-        window.addEventListener("popstate", app1_gere0018.browserBackButton, false);
-	    app1_gere0018.loadPage(null);
+      //must register event listener on click event even if touch is supported.handletouch will transform touch into a click, but we still need to attach event listener to it with line below.
+           links[i].addEventListener("click", app1_gere0018.handleNav, false);
 
+       }
+       window.addEventListener("popstate", app1_gere0018.browserBackButton, false);
+        //loading the first page with url=null
+	   app1_gere0018.loadPage(null);
     },
     //Transform the touch event into a mouse event "click":
     handleTouch:function (ev){
-      ev.preventDefault();
+      ev.preventDefault();//prevent 300 ms delay
       ev.stopImmediatePropagation();
       var touch = ev.changedTouches[0]; //this is the first object touched
       var newEvt = document.createEvent("MouseEvent");
       //old method works across browsers, though it is deprecated.
       newEvt.initMouseEvent("click", true, true, window, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY);
-      ev.originalTarget.dispatchEvent(newEvt);
+      ev.currentTarget.dispatchEvent(newEvt);
       //send the touch to the click handler
     },
     //handle the click event
     handleNav:function (ev){
-        ev.preventDefault();
+        ev.preventDefault();// preventing page reload
         var href = ev.currentTarget.href;
         var parts = href.split("#");//returns an array with 2 strings, the string before # and the string after the #.
         app1_gere0018.loadPage( parts[1] );
-        //ask Steve what is return false for??????
-      return false;
+        return false;
     },
 
     //Deal with history API and switching divs
@@ -83,7 +86,14 @@ var app1_gere0018 = {
                   pages[i].classList.add("pt-page-moveFromBottomFade");
                   if(pages[i].id == "location"){
                   app1_gere0018.setLocation();
-              }
+                  }
+                  if(pages[i].id == "contact"){
+                    if(navigator.contacts){
+                        app1_gere0018.launchContactPicker();
+                    }else{
+                        alert("Sorry!! You can access your contacts only on a mobile device.");
+                    }
+                  }
                 history.pushState(null, null, "#" + url);
               }else{
                   var classes = pages[i].getAttribute("class");
@@ -177,8 +187,47 @@ var app1_gere0018 = {
       };
  //in case of erros the following function gives an explanation of type of error to the user.
       alert("Error: " + errors[error.code]);
+    },
+    launchContactPicker: function (){
+        console.log("launchContactPicker called");
+        alert("please select your emergency contact!");
+        navigator.contacts.pickContact(app1_gere0018.selectContact, app1_gere0018.errFunc);
+    },
+
+    selectContact: function ( pickedContact ){
+          var contactsOutput = document.querySelector("#contactsOutput");
+          contactsOutput.innerHTML = "<h4>Your Emergency Contact's info: </h4></br>" +
+                                      "<p>Name: " +  pickedContact.displayName + "<p></br>";
+        // Display Contact's Phone number ******************************************
+        var contactNumber;
+          if(pickedContact.phoneNumbers== null){
+              contactNumber= "This contact has no saved number";
+          }else{
+              contactNumber= pickedContact.phoneNumbers[0].value;
+          }
+         contactsOutput.innerHTML += "<p>Phone number: " + contactNumber  + "<p></br>";
+
+        // Display Contact's address ***********************************************
+        var contactAddress;
+         if(pickedContact.addresses== null) {
+            contactAddress = "This contact has no saved address";
+         }else if(pickedContact.addresses[0].value== null){
+              contactAddress = "This contact has no saved address";
+             }
+         else{
+           contactAddress = pickedContact.addresses[0].value;
+         }
+
+         contactsOutput.innerHTML += "<p>Address: " +  contactAddress + "<p></br>";
+    },
+    errfunc:function (){
+        alert("sorry !! we are not able to load your contact right now!!")
+
     }
+
+
     //TODO: use COrdova COntact API to handle the contacts page and load contacts.
 
 };
 app1_gere0018.initialize();
+

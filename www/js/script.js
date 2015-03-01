@@ -85,8 +85,14 @@ var app1_gere0018 = {
                   pages[i].className = "activePage";
                   pages[i].classList.add("pt-page-moveFromBottomFade");
                   if(pages[i].id == "location"){
-                  console.log("id==location");
                   app1_gere0018.setLocation();
+                  }
+                  if(pages[i].id == "contact"){
+                    if(navigator.contacts){
+                        app1_gere0018.launchContactPicker();
+                    }else{
+                        alert("Sorry!! You can access your contacts only on a mobile device.");
+                    }
                   }
                 history.pushState(null, null, "#" + url);
               }else{
@@ -181,7 +187,45 @@ var app1_gere0018 = {
       };
  //in case of erros the following function gives an explanation of type of error to the user.
       alert("Error: " + errors[error.code]);
+    },
+    launchContactPicker: function (){
+        console.log("launchContactPicker called");
+        alert("please select your emergency contact!");
+        navigator.contacts.pickContact(app1_gere0018.selectContact, app1_gere0018.errFunc);
+    },
+
+    selectContact: function ( pickedContact ){
+          var contactsOutput = document.querySelector("#contactsOutput");
+          contactsOutput.innerHTML = "<h4>Your Emergency Contact's info: </h4></br>" +
+                                      "<p>Name: " +  pickedContact.displayName + "<p></br>";
+        // Display Contact's Phone number ******************************************
+        var contactNumber;
+          if(pickedContact.phoneNumbers== null){
+              contactNumber= "This contact has no saved number";
+          }else{
+              contactNumber= pickedContact.phoneNumbers[0].value;
+          }
+         contactsOutput.innerHTML += "<p>Phone number: " + contactNumber  + "<p></br>";
+
+        // Display Contact's address ***********************************************
+        var contactAddress;
+         if(pickedContact.addresses== null) {
+            contactAddress = "This contact has no saved address";
+         }else if(pickedContact.addresses[0].value== null){
+              contactAddress = "This contact has no saved address";
+             }
+         else{
+           contactAddress = pickedContact.addresses[0].value;
+         }
+
+         contactsOutput.innerHTML += "<p>Address: " +  contactAddress + "<p></br>";
+    },
+    errfunc:function (){
+        alert("sorry !! we are not able to load your contact right now!!")
+
     }
+
+
     //TODO: use COrdova COntact API to handle the contacts page and load contacts.
 
 };

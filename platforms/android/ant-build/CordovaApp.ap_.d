@@ -36,6 +36,7 @@ C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\index.html \
 C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\js \
 C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\media \
 C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\plugins \
+C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\README.md \
 C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\scss \
 C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\css\page-transitions.css \
 C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\css\page-transitions.css.map \
@@ -43,7 +44,7 @@ C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\css\styles.css
 C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\css\styles.css.map \
 C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\css\variables.css \
 C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\css\variables.css.map \
-C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\js\index.js \
+C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\js\script.js \
 C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\media\app-1-svg-home.svg \
 C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\media\app1-svg-contact.svg \
 C:\wamp\www\MAD9022\Mobile-framework\platforms\android\assets\www\media\app1-svg-location.svg \
