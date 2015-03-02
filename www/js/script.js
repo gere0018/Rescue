@@ -77,7 +77,6 @@ var app1_gere0018 = {
         if(url == null){
             //home page first call
             pages[0].className = "activePage";
-            pages[0].classList.add("pt-page-moveFromBottomFade");
             history.replaceState(null, null, "#home");
         }else{
             //loop through pages

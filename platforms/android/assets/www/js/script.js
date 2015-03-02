@@ -4,6 +4,7 @@ var app1_gere0018 = {
     links:[],
     numLinks:0,
     toggleMenuIcon:"",
+    verticalMenu: "",
     initialize: function() {
         app1_gere0018.bindEvents();
     },
@@ -28,7 +29,7 @@ var app1_gere0018 = {
     showMenu:function(){
         //change toggle menu icon to an x shape when clicked
         toggleMenuIcon.classList.toggle("x-toggle-menu");
-        var verticalMenu = document.querySelector(".verticalMenu");
+        verticalMenu = document.querySelector(".verticalMenu");
         //change class of body to allow the push transition.
         document.body.classList.toggle("pushMenuToLeft");
        verticalMenu.classList.toggle("OpenverticalMenu");
@@ -84,15 +85,21 @@ var app1_gere0018 = {
               if(pages[i].id == url){
                   pages[i].className = "activePage";
                   pages[i].classList.add("pt-page-moveFromBottomFade");
+                  //making vertical menu disapper when we select a tab.
+                  verticalMenu = document.querySelector("#verticalMenu");
+                  if(verticalMenu.className == "verticalMenu OpenverticalMenu"){
+                      verticalMenu.classList.remove("OpenverticalMenu");                                    document.body.classList.toggle("pushMenuToLeft");
+                      toggleMenuIcon.classList.toggle("x-toggle-menu");
+                  }
+
                   if(pages[i].id == "location"){
                   app1_gere0018.setLocation();
                   }
                   if(pages[i].id == "contact"){
                     if(navigator.contacts){
                         app1_gere0018.launchContactPicker();
-                    }else{
-                        alert("Sorry!! You can access your contacts only on a mobile device.");
                     }
+
                   }
                 history.pushState(null, null, "#" + url);
               }else{
@@ -171,7 +178,7 @@ var app1_gere0018 = {
 // append the canvas to the div with id output.
      var output = document.querySelector("#output");
      var msg = document.querySelector("#msg");
-     msg.innerHTML = "<strong>Your current location is:</strong><br/><br/>" +
+     msg.innerHTML = "<strong>Your current location is:</strong><br/>" +
          "Latitude: " + position.coords.latitude + "&deg;<br/>" +
          "Longitude: " + position.coords.longitude + "&deg;<br/><br/>" ;
     //after loading the map image, remove the message asking the user to wait for loading.
@@ -221,6 +228,7 @@ var app1_gere0018 = {
          }
 
          contactsOutput.innerHTML += "<p>Address: " +  contactAddress + "<p></br>";
+
     },
     errfunc:function (){
         alert("sorry !! we are not able to load your contact right now!!")
@@ -229,4 +237,3 @@ var app1_gere0018 = {
 
 };
 app1_gere0018.initialize();
-

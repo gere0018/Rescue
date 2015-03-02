@@ -1,3 +1,5 @@
+//TODO: SCSS Fix pages height:URGENT!!
+//TODO: push footer with vertical menu if possible.
 //Defaults*****************************************************************
 @import "variables";
 *{
@@ -7,13 +9,11 @@
 html, body{
     background-color: $body;
     height: 100%;
-
 }
 html {
     -ms-touch-action: manipulation;
     touch-action: manipulation;
 }
-
 P{
     font-family: "Garamond", sans-serif;
     font-size:1.4rem;
@@ -33,7 +33,6 @@ P{
 .clearfix { display: block; }
 
 //Body *******************************************************************
-//class applied to body to push toggle menu to left
 //FUTURE: play with colors and possibly add more fonts and title animation
 body{
     // set the starting size for the app
@@ -46,7 +45,7 @@ body{
 	-moz-transition: all 0.3s ease;
 	transition: all 0.3s ease;
 }
-
+//class applied to body to push toggle menu to left
 .pushMenuToLeft{
     left: -175px;
     //if menu is open and screen width increases(ex: orientation change),body push should go back to normal, not only vertical menu.
@@ -125,9 +124,12 @@ body{
     font-size: 1.5rem;
     font-family: "Georgia", cursive;
     }
+    [href="#location"]{
+        border-bottom: 1px solid $text;
+        border-top: 1px solid $text;
+    }
     .activeTab{
         background-color: $page;
-
     }
     //disappears on devices with more than 500px width
     @media screen and (min-width:650px){
@@ -151,11 +153,14 @@ body{
         margin: 0;
         background-color: $page;
         width: 100%;
+
+
     }
     li{
         float: left;
         height:3rem;
         width: 33.33%;
+
     }
     .button{
         color: #484848;
@@ -168,6 +173,11 @@ body{
         font-family: "Georgia", cursive;
 
     }
+    [href="#location"]{
+        border-left: 1px solid $text;
+        border-right: 1px solid $text;
+    }
+
     .button.activeTab{
         background-color: $page;
     }
@@ -239,7 +249,7 @@ svg{
     top: 0;
 	left: 0;
 	visibility: hidden;
-	overflow: hidden;
+//	overflow: hidden;
     -webkit-backface-visibility: hidden;
    -moz-backface-visibility: hidden;
    -ms-backface-visibility: hidden;
@@ -265,23 +275,47 @@ svg{
     visibility: visible;
     z-index: 1;
 }
+//Location Page*********************************************
 #output{
-    width: 60%;
+    width: 95%;
+    height: 95%;
     margin: 0 auto;
-    @media screen and (max-width: 750px){
-        margin: 2rem;
-    }
-    @media screen and (max-width: 450px){
-       margin:0;
+    overflow-x: auto;
+    overflow-y: auto;
+    text-align: center;
+    @media screen and (min-width: 900px){
+        width: 60%;
+        margin-left: 20%;
     }
 
 }
+//Contacts Page*********************************************
+#contactsOutput{
+    margin: 0 auto;
+    width: 95%;
+    font-family: "Garamond", sans-serif;
+    text-align: center;
+    font-size:1.4rem;
+    color: $text;
+
+}
+#selectBtn{
+    padding: 0.5rem;
+    margin: 1rem;
+    border-radius: 25px;
+    font-family: "Garamond", sans-serif;
+    font-size:1.4rem;
+    color: $header;
+    background-color: $body;
+
+
+            }
 
 //Footer****************************************************************
 
 .footer{
-    background-color: $header;
-    margin: 0rem;
+      background-color: $header;
+      margin: 0rem;
       position:fixed;
       width: 100%;
       bottom: 0;
