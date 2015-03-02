@@ -103,6 +103,7 @@ var app1_gere0018 = {
                 history.pushState(null, null, "#" + url);
               }else{
                   var classes = pages[i].getAttribute("class");
+                  //if the page doesn't have an active page class
                   if (classes && (-1 !== classes.indexOf("activePage"))){
                        pages[i].classList.remove("pt-page-moveFromBottomFade");
                       pages[i].classList.add("pt-page-rotateFoldTop");
