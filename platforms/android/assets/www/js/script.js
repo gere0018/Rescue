@@ -211,11 +211,8 @@ var app1_gere0018 = {
         var contactAddress;
          if(pickedContact.addresses== null) {
             contactAddress = "This contact has no saved address";
-         }else if(pickedContact.addresses[0].value== null){
-              contactAddress = "This contact has no saved address";
-             }
-         else{
-           contactAddress = pickedContact.addresses[0].value;
+         }else{
+           contactAddress = pickedContact.addresses[0].formatted;
          }
 
          contactsOutput.innerHTML += "<p>Address: " +  contactAddress + "<p></br>";
