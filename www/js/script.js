@@ -3,7 +3,7 @@ var app1_gere0018 = {
     numPages:0,
     links:[],
     numLinks:0,
-    toggleMenuIcon:"",
+    toggleMenuIcon: "",
     verticalMenu: "",
     initialize: function() {
         app1_gere0018.bindEvents();
@@ -153,7 +153,6 @@ var app1_gere0018 = {
     },
     //Using Cordova Geolocation API to get current Location.
     setLocation: function(){
-        console.log("location called");
         if( navigator.geolocation ){
         var getLocation = {enableHighAccuracy: false, timeout:60000, maximumAge:60000};
         navigator.geolocation.getCurrentPosition( app1_gere0018.reportPosition, app1_gere0018.gpsError, getLocation);
@@ -228,6 +227,7 @@ var app1_gere0018 = {
          }
 
          contactsOutput.innerHTML += "<p>Address: " +  contactAddress + "<p></br>";
+        contactsOutput.innerHTML +=  '<button id = "selectBtn">Change Contact</button>';
 
     },
     errfunc:function (){

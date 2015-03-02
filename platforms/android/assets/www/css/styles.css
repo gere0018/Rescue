@@ -223,8 +223,7 @@ svg {
   height: 95%;
   margin: 0 auto;
   overflow-x: auto;
-  overflow-y: auto;
-  text-align: center; }
+  overflow-y: auto; }
   @media screen and (min-width: 900px) {
     #output {
       width: 60%;
@@ -234,7 +233,6 @@ svg {
   margin: 0 auto;
   width: 95%;
   font-family: "Garamond", sans-serif;
-  text-align: center;
   font-size: 1.4rem;
   color: #444; }
 
