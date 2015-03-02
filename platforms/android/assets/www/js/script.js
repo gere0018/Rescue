@@ -144,17 +144,18 @@ var app1_gere0018 = {
       var touchSupport = (("ontouchstart" in window) || msGesture || (window.DocumentTouch && document instanceof DocumentTouch));
       return touchSupport;
     },
-    //TODO: use Cordova Geolocation API to work within the phone.
+    //Using Cordova Geolocation API to get current Location.
     setLocation: function(){
         console.log("location called");
         if( navigator.geolocation ){
         var getLocation = {enableHighAccuracy: false, timeout:60000, maximumAge:60000};
-        navigator.geolocation.getCurrentPosition( app1_gere0018.reportPosition, app1_gere0018.gpsError, app1_gere0018.getLocation);
+        navigator.geolocation.getCurrentPosition( app1_gere0018.reportPosition, app1_gere0018.gpsError, getLocation);
         //If it doesn't alert the user with the following message.
         }else{
             alert("OOPS!! your browser needs to be updated and currently does not support location based services.")
         }
     },
+    //success function
     reportPosition:function( position ){
          app1_gere0018.drawImage(position);
         },
@@ -189,9 +190,13 @@ var app1_gere0018 = {
       alert("Error: " + errors[error.code]);
     },
     launchContactPicker: function (){
-        console.log("launchContactPicker called");
-        alert("please select your emergency contact!");
-        navigator.contacts.pickContact(app1_gere0018.selectContact, app1_gere0018.errFunc);
+        var selectBtn = document.querySelector("#selectBtn");
+        if(app1_gere0018.detectTouchSupport( )){
+            selectBtn.addEventListener("touchend", app1_gere0018.handleTouch);
+         }
+        selectBtn.addEventListener("click", function (){
+             navigator.contacts.pickContact(app1_gere0018.selectContact, app1_gere0018.errFunc);
+            });
     },
 
     selectContact: function ( pickedContact ){
@@ -221,9 +226,6 @@ var app1_gere0018 = {
         alert("sorry !! we are not able to load your contact right now!!")
 
     }
-
-
-    //TODO: use COrdova COntact API to handle the contacts page and load contacts.
 
 };
 app1_gere0018.initialize();
