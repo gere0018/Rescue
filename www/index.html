@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Rescue</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/page-transitions.css">
 
@@ -13,7 +13,7 @@
 <!--Header************************************************************-->
 <!--TODO: change page 1 content-->
     <header class = "clearfix appTitle">
-        <h1>Application One</h1>
+        <h1>Rescue!!</h1>
         <svg version="1.1" id="toggle-menu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
 	 y="0px" viewBox="0 0 500 400" enable-background="new 0 0 500 400" xml:space="preserve">
 <circle id="yellow-circle" fill="#FCEE21" stroke="#000000" stroke-width="9" stroke-miterlimit="10" cx="250.4" cy="202.8" r="190"/>
@@ -36,7 +36,7 @@
 
     </header>
 <!--Navigation********************************************************-->
-    <nav class="verticalMenu">
+    <nav id= "verticalMenu" class="verticalMenu">
 			<a href="#home" class = "activeTab button">
                 <svg version="1.1" id="Home" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 500 400" enable-background="new 0 0 500 400" xml:space="preserve">
@@ -91,7 +91,9 @@
 </svg>
                 Contact</a>
 		</nav>
-    <nav class = "navBar">
+
+<!--Horizontal Navbar *************************************************-->
+    <nav id="horizontalNavbar " class = "navBar">
         <ul>
             <li><a href = "#home" class = " activeTab button">
                     <svg version="1.1" id="Home" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
@@ -155,7 +157,9 @@ Home</a></li>
     <!--Page # 1 Home ***********************************************************-->
         <section id = "home" data-role = "page" >
             <h2>The Application</h2>
-            <p>This application will send a message to your emergency contact.This App is a web app designed from scratch using only html5 css and javaScript without the help of any framework like bootstrap or libraries like JQuery or JQuery mobile. It's an opportunity to review all the concepts studed so far and to practice single page applications in html. Most importantly the Cordova phone gap is used again to allow us to make the app fucntional on Android.</p>
+            <p>This text is a made up description for my fictional application:<br/> Rescue will send a message to your emergency contact when you happen to be in danger. Therfore the app requires access to your location. You will also need to fix an emergency contact that will be accessed when needed.</p><br/>
+
+            <p>This App is a web application designed from scratch using only html5 css3 and javaScript without the help of any framework like bootstrap or libraries like JQuery or JQuery mobile. It's an opportunity to review all the concepts studied so far and to practice single page applications in html. Most importantly the Cordova phone gap is used again to allow us to make the app fucntional on Android.</p>
         </section>
 
     <!--Page # 2 Location ***********************************************************-->
@@ -172,7 +176,7 @@ Home</a></li>
         <section id = "contact"  data-role = "page">
             <div id = "contactsOutput">
                 <h2>Emergency Contact</h2>
-                <p>Please Select your emergency contact!!</p>
+                <p>This service works only on mobile devices. Please Select your emergency contact by clicking the button below!!</p>
                 <button id = "selectBtn">Select Contact</button>
             </div>
 
