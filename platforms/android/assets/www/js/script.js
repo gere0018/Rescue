@@ -3,9 +3,8 @@ var app1_gere0018 = {
     numPages:0,
     links:[],
     numLinks:0,
-    toggleMenuIcon: "",
+    toggleMenuIcon:"",
     verticalMenu: "",
-    selectBtn: "",
     initialize: function() {
         app1_gere0018.bindEvents();
     },
@@ -78,6 +77,7 @@ var app1_gere0018 = {
         if(url == null){
             //home page first call
             pages[0].className = "activePage";
+            pages[0].classList.add("pt-page-moveFromBottomFade");
             history.replaceState(null, null, "#home");
         }else{
             //loop through pages
@@ -104,7 +104,6 @@ var app1_gere0018 = {
                 history.pushState(null, null, "#" + url);
               }else{
                   var classes = pages[i].getAttribute("class");
-                  //if the page doesn't have an active page class
                   if (classes && (-1 !== classes.indexOf("activePage"))){
                        pages[i].classList.remove("pt-page-moveFromBottomFade");
                       pages[i].classList.add("pt-page-rotateFoldTop");
@@ -154,6 +153,7 @@ var app1_gere0018 = {
     },
     //Using Cordova Geolocation API to get current Location.
     setLocation: function(){
+        console.log("location called");
         if( navigator.geolocation ){
         var getLocation = {enableHighAccuracy: false, timeout:60000, maximumAge:60000};
         navigator.geolocation.getCurrentPosition( app1_gere0018.reportPosition, app1_gere0018.gpsError, getLocation);
@@ -197,11 +197,12 @@ var app1_gere0018 = {
       alert("Error: " + errors[error.code]);
     },
     launchContactPicker: function (){
-        selectBtn = document.querySelector("#selectBtn");
+        var selectBtn = document.querySelector("#selectBtn");
         if(app1_gere0018.detectTouchSupport( )){
             selectBtn.addEventListener("touchend", app1_gere0018.handleTouch);
          }
         selectBtn.addEventListener("click", function (){
+            console.log("Selection button is clicked.");
              navigator.contacts.pickContact(app1_gere0018.selectContact, app1_gere0018.errFunc);
             });
     },
@@ -228,10 +229,9 @@ var app1_gere0018 = {
          }
 
          contactsOutput.innerHTML += "<p>Address: " +  contactAddress + "<p></br>";
-        contactsOutput.innerHTML += selectBtn;
 
     },
-    errfunc:function (){
+    errFunc:function (){
         alert("sorry !! we are not able to load your contact right now!!")
 
     }

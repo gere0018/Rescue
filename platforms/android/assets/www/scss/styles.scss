@@ -261,7 +261,6 @@ svg{
 	transform-style: preserve-3d;
 
     h2{
-        text-align: center;
         font-weight: 150;
         padding: 0.5rem;
         font-size: 1.5rem;
@@ -280,7 +279,6 @@ svg{
     margin: 0 auto;
     overflow-x: auto;
     overflow-y: auto;
-//    text-align: center;
     @media screen and (min-width: 900px){
         width: 60%;
         margin-left: 20%;
@@ -292,7 +290,6 @@ svg{
     margin: 0 auto;
     width: 95%;
     font-family: "Garamond", sans-serif;
-//    text-align: center;
     font-size:1.4rem;
     color: $text;
 

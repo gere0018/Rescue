@@ -208,7 +208,6 @@ svg {
   -moz-transform-style: preserve-3d;
   transform-style: preserve-3d; }
   [data-role="page"] h2 {
-    text-align: center;
     font-weight: 150;
     padding: 0.5rem;
     font-size: 1.5rem;
