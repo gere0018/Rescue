@@ -3,6 +3,7 @@ var app1_gere0018 = {
     numPages:0,
     links:[],
     numLinks:0,
+    pageWrapper: "",
     toggleMenuIcon:"",
     verticalMenu: "",
     initialize: function() {
@@ -84,9 +85,9 @@ var app1_gere0018 = {
         //change toggle menu icon to an x shape when clicked
         toggleMenuIcon.classList.toggle("x-toggle-menu");
         verticalMenu = document.querySelector(".verticalMenu");
-        //change class of body to allow the push transition.
-        document.body.classList.toggle("pushMenuToLeft");
-       verticalMenu.classList.toggle("OpenverticalMenu");
+        pageWrapper = document.querySelector("#pageWrapper");
+        pageWrapper.classList.toggle("pageWrapperPushedLeft");
+        verticalMenu.classList.toggle("OpenverticalMenu");
     },
 
     //Deal with history API and switching divs
@@ -106,8 +107,8 @@ var app1_gere0018 = {
                   //making vertical menu disapper when we select a tab.
                   verticalMenu = document.querySelector("#verticalMenu");
                   if(verticalMenu.className == "verticalMenu OpenverticalMenu"){
-                      verticalMenu.classList.remove("OpenverticalMenu");                                    document.body.classList.toggle("pushMenuToLeft");
                       toggleMenuIcon.classList.toggle("x-toggle-menu");
+//                          document.body.classList.toggle("pushMenuToLeft");
                   }
 
                   if(pages[i].id == "location"){
