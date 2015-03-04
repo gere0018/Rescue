@@ -43,9 +43,9 @@ body {
   right: -175px;
   top: 4rem;
   z-index: 900;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  transition: all 0.3s ease; }
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
   .verticalMenu a {
     color: #444;
     background-color: #7C7A68;
@@ -76,9 +76,9 @@ body {
   width: 100%;
   left: 0;
   height: 4rem;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  transition: all 0.3s ease; }
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
   .appTitle h1 {
     text-align: center;
     font-family: "Georgia", cursive;
@@ -177,9 +177,9 @@ svg {
   left: 0;
   width: 100%;
   height: 100%;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  transition: all 0.3s ease; }
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
 
 #pageWrapper.pageWrapperPushedLeft {
   left: -175px; }
@@ -247,9 +247,9 @@ svg {
   bottom: 0;
   height: 60px;
   z-index: 1000;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  transition: all 0.3s ease; }
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  transition: all 0.5s ease; }
   .footer P {
     text-align: center;
     padding-top: 17px; }
