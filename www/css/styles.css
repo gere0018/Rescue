@@ -34,7 +34,6 @@ P {
 
 body {
   font-size: 5vmin;
-  left: 0;
   position: relative;
   -webkit-transition: all 0.3s ease;
   -moz-transition: all 0.3s ease;
@@ -42,13 +41,9 @@ body {
 
 .pushMenuToLeft {
   left: -175px; }
-  .pushMenuToLeft footer {
-    left: -175px; }
-  @media screen and (min-width: 650px) {
+  @media screen and (min-width: 500px) {
     .pushMenuToLeft {
-      left: 0; }
-      .pushMenuToLeft footer {
-        left: 0; } }
+      left: 0; } }
 
 .appTitle {
   background-color: #FCEC5D;
@@ -61,7 +56,7 @@ body {
     font-size: 1.7rem;
     color: #444;
     letter-spacing: 2px; }
-    @media screen and (max-width: 650px) {
+    @media screen and (max-width: 500px) {
       .appTitle h1 {
         display: inline;
         width: 80%;
@@ -76,7 +71,7 @@ body {
     opacity: 0; }
   #toggle-menu #line3 {
     opacity: 1; }
-  @media screen and (min-width: 650px) {
+  @media screen and (min-width: 500px) {
     #toggle-menu {
       display: none; } }
 
@@ -109,17 +104,14 @@ body {
     border-top: 1px solid #444; }
   .verticalMenu .activeTab {
     background-color: #FBF8D3; }
-  @media screen and (min-width: 650px) {
+  @media screen and (min-width: 500px) {
     .verticalMenu {
-      rigth: -175px; } }
+      display: none; } }
 
 .OpenverticalMenu {
-  right: 0;
+  right: 0px;
   background-color: #7C7A68;
   opacity: 0.85; }
-  @media screen and (min-width: 650px) {
-    .OpenverticalMenu {
-      display: none; } }
 
 .navBar {
   display: none;
@@ -147,7 +139,7 @@ body {
     border-right: 1px solid #444; }
   .navBar .button.activeTab {
     background-color: #FBF8D3; }
-  @media screen and (min-width: 650px) {
+  @media screen and (min-width: 500px) {
     .navBar {
       display: block; } }
 
@@ -183,8 +175,9 @@ svg {
     fill: black; }
 
 .pageWrapper {
+  position: relative;
   width: 100%;
-  height: 88%;
+  height: 100%;
   -webkit-perspective: 1200px;
   -moz-perspective: 1200px;
   perspective: 1200px; }
@@ -223,18 +216,6 @@ svg {
   visibility: visible;
   z-index: 1; }
 
-#output {
-  width: 95%;
-  height: 95%;
-  margin: 0 auto;
-  overflow-x: auto;
-  overflow-y: auto;
-  text-align: center; }
-  @media screen and (min-width: 900px) {
-    #output {
-      width: 60%;
-      margin-left: 20%; } }
-
 #contactsOutput {
   margin: 0 auto;
   width: 95%;
@@ -257,11 +238,8 @@ svg {
   position: fixed;
   width: 100%;
   bottom: 0;
-  left: 0;
   height: 60px;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  transition: all 0.3s ease; }
+  z-index: 1000; }
   .footer P {
     text-align: center;
     padding-top: 17px; }

@@ -1,5 +1,3 @@
-
-//TODO: push footer with vertical menu if possible.
 //Defaults*****************************************************************
 @import "variables";
 *{
@@ -49,7 +47,7 @@ body{
 .pushMenuToLeft{
     left: -175px;
     //if menu is open and screen width increases(ex: orientation change),body push should go back to normal, not only vertical menu.
-    @media screen and (min-width:650px){
+    @media screen and (min-width:500px){
         left:0;
     }
 }
@@ -67,7 +65,7 @@ body{
         color: #444;
         letter-spacing: 2px;
 
-       @media screen and (max-width:650px){
+       @media screen and (max-width:500px){
         display: inline;
         width: 80%;
         float: left;
@@ -88,7 +86,7 @@ body{
      opacity: 1;
     }
     //toggle menu disappears on devices with more than 500px width
-    @media screen and (min-width:650px){
+    @media screen and (min-width:500px){
         display: none;
     }
 }
@@ -132,7 +130,7 @@ body{
         background-color: $page;
     }
     //disappears on devices with more than 500px width
-    @media screen and (min-width:650px){
+    @media screen and (min-width:500px){
         display:none;
     }
 }
@@ -181,7 +179,7 @@ body{
         background-color: $page;
     }
 //navBar appears as soon as vertical menu and togglemenu svg disappear.
-    @media screen and (min-width:650px){
+    @media screen and (min-width:500px){
         display: block;
     }
 }
@@ -228,7 +226,7 @@ svg{
 .pageWrapper {
 	position: relative;
 	width: 100%;
-	height: 88%;
+	height: 100%;
 	-webkit-perspective: 1200px;
 	-moz-perspective: 1200px;
 	perspective: 1200px;
@@ -273,18 +271,7 @@ svg{
     z-index: 1;
 }
 //Location Page*********************************************
-#output{
-    width: 95%;
-    height: 95%;
-    margin: 0 auto;
-    overflow-x: auto;
-    overflow-y: auto;
-    @media screen and (min-width: 900px){
-        width: 60%;
-        margin-left: 20%;
-    }
 
-}
 //Contacts Page*********************************************
 #contactsOutput{
     margin: 0 auto;
