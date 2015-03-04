@@ -100,15 +100,16 @@ var app1_gere0018 = {
         }else{
             //loop through pages
             for(var i=0; i < numPages; i++){
+                //for the selected page to become active page
               if(pages[i].id == url){
                   pages[i].className = "activePage";
                   pages[i].classList.add("pt-page-moveFromBottomFade");
                   window.scrollTo( 0, 0 );
                   //making vertical menu disapper when we select a tab.
-                  verticalMenu = document.querySelector("#verticalMenu");
                   if(verticalMenu.className == "verticalMenu OpenverticalMenu"){
+                      verticalMenu.classList.toggle("OpenverticalMenu");
                       toggleMenuIcon.classList.toggle("x-toggle-menu");
-//                          document.body.classList.toggle("pushMenuToLeft");
+                      pageWrapper.classList.toggle("pageWrapperPushedLeft");
                   }
 
                   if(pages[i].id == "location"){
@@ -117,6 +118,7 @@ var app1_gere0018 = {
 
                 history.pushState(null, null, "#" + url);
               }else{
+                  //for the other pages that are was active and will be replaced
                   var classes = pages[i].getAttribute("class");
                   if (classes && (-1 !== classes.indexOf("activePage"))){
                        pages[i].classList.remove("pt-page-moveFromBottomFade");
