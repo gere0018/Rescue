@@ -95,7 +95,7 @@ var app1_gere0018 = {
         if(url == null){
             //home page first call
             pages[0].className = "activePage";
-            window.scrollTo(0, 0);
+            document.body.scrollTop = 0;
             history.replaceState(null, null, "#home");
         }else{
             //loop through pages
