@@ -6,6 +6,7 @@ var app1_gere0018 = {
     pageWrapper: "",
     toggleMenuIcon:"",
     verticalMenu: "",
+    deviceContacts: "",
     initialize: function() {
         app1_gere0018.bindEvents();
     },
@@ -18,16 +19,16 @@ var app1_gere0018 = {
      var options = new ContactFindOptions( );
         options.filter = "";  //leaving this empty will find return all contacts
         options.multiple = true;  //return multiple results
-        var filter = ["displayName"];    //an array of fields to compare against the options.filter
+        var filter = ["displayName"]; //an array of fields to compare against the options.filter
         navigator.contacts.find(filter, app1_gere0018.contactsSuccess, app1_gere0018.contactsError, options);
     },
     // Update DOM on a Received Event
     onDomReady: function(id) {
       app1_gere0018.prepareNavigation();
-
     },
 
     prepareNavigation:function(){
+        console.log("Inside preparenavgatin");
         //add Listeners to toggle menu icon
        toggleMenuIcon = document.querySelector("#toggle-menu");
         if(app1_gere0018.detectTouchSupport( )){
@@ -36,6 +37,7 @@ var app1_gere0018 = {
        toggleMenuIcon.addEventListener("click", app1_gere0018.showMenu);
 
        pages = document.querySelectorAll('[data-role="page"]');
+        console.log("pages are:" + pages);
 	   numPages = pages.length;
 	   links = document.querySelectorAll(".button");
 	   numLinks = links.length;
@@ -49,6 +51,7 @@ var app1_gere0018 = {
        }
         //add listener to browser's back button
        window.addEventListener("popstate", app1_gere0018.browserBackButton, false);
+        console.log("Calling loadPage");
         //load the first page with url=null
 	   app1_gere0018.loadPage(null);
         //Add touch/click listener to contacts button
@@ -56,10 +59,8 @@ var app1_gere0018 = {
         if(app1_gere0018.detectTouchSupport( )){
             selectBtn.addEventListener("touchend", app1_gere0018.handleTouch);
          }
-        selectBtn.addEventListener("click", function (){
-            console.log("Selection button is clicked.");
-             navigator.contacts.pickContact(app1_gere0018.selectContact, app1_gere0018.errFunc);
-            });
+        selectBtn.addEventListener("click", app1_gere0018.selectRandomContact);
+
     },
     //Transform the touch event into a mouse event "click":
     handleTouch:function (ev){
@@ -95,7 +96,8 @@ var app1_gere0018 = {
         if(url == null){
             //home page first call
             pages[0].className = "activePage";
-            document.pages[0].scrollTop = 0;
+//            document.pages.scrollTop = 0;
+//            console.log
             history.replaceState(null, null, "#home");
         }else{
             //loop through pages
@@ -210,45 +212,51 @@ var app1_gere0018 = {
  //in case of erros the following function gives an explanation of type of error to the user.
       alert("Error: " + errors[error.code]);
     },
-//    launchContactPicker: function (){
-//        var selectBtn = document.querySelector("#selectBtn");
-//        if(app1_gere0018.detectTouchSupport( )){
-//            selectBtn.addEventListener("touchend", app1_gere0018.handleTouch);
-//         }
-//        selectBtn.addEventListener("click", function (){
-//            console.log("Selection button is clicked.");
-//             navigator.contacts.pickContact(app1_gere0018.selectContact, app1_gere0018.errFunc);
-//            });
-//    },
-
-    contactsSuccess: function ( pickedContact ){
-          var contactsOutput = document.querySelector("#contactsOutput");
-          contactsOutput.innerHTML = "<h4>Your Emergency Contact's info: </h4></br>" +
-                                      "<p>Name: " +  pickedContact.displayName + "<p></br>";
+    selectRandomContact: function (){
+        //generate random number
+        this.innerHTML = "Change Contact";
+        var randomNumber = Math.floor(Math.random()* deviceContacts.length);
+        var contactsOutput = document.querySelector("#contactsOutput");
+       contactsOutput.innerHTML = "<h4>Your Emergency Contact's info: </h4></br>" +
+               "<p>Name: " +  deviceContacts[randomNumber].displayName + "<p></br>";
         // Display Contact's Phone number ******************************************
         var contactNumber;
-          if(pickedContact.phoneNumbers== null){
+          if(deviceContacts[randomNumber].phoneNumbers== null){
               contactNumber= "This contact has no saved number";
           }else{
-              contactNumber= pickedContact.phoneNumbers[0].value;
+              contactNumber= deviceContacts[randomNumber].phoneNumbers[0].value;
           }
          contactsOutput.innerHTML += "<p>Phone number: " + contactNumber  + "<p></br>";
 
         // Display Contact's address ***********************************************
         var contactAddress;
-         if(pickedContact.addresses== null) {
+         if(deviceContacts[randomNumber].addresses== null) {
             contactAddress = "This contact has no saved address";
          }else{
-           contactAddress = pickedContact.addresses[0].formatted;
+           contactAddress = deviceContacts[randomNumber].addresses[0].formatted;
          }
 
          contactsOutput.innerHTML += "<p>Address: " +  contactAddress + "<p></br>";
+        var contactPhoto;
+        if(deviceContacts[randomNumber].photos== null) {
+           contactPhoto = "This contact has no saved photo";
+         }else{
+           contactPhoto = deviceContacts[randomNumber].photos[0].value;
+           contactsOutput.innerHTML += "<img src = " + contactPhoto + "></img></br>";
+         }
+
 
     },
     contactsError:function (){
         alert("sorry !! we are not able to load your contact right now!!")
 
+    },
+
+    contactsSuccess: function (contacts){
+//saved the contacts returned from success function in the variable deviceContacts
+        deviceContacts = contacts;
     }
 
-};
+ };
+
 app1_gere0018.initialize();
