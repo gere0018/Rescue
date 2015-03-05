@@ -1,5 +1,5 @@
 var app1_gere0018 = {
-    page:[],
+    pages:[],
     numPages:0,
     links:[],
     numLinks:0,
@@ -37,7 +37,6 @@ var app1_gere0018 = {
        toggleMenuIcon.addEventListener("click", app1_gere0018.showMenu);
 
        pages = document.querySelectorAll('[data-role="page"]');
-        console.log("pages are:" + pages);
 	   numPages = pages.length;
 	   links = document.querySelectorAll(".button");
 	   numLinks = links.length;
@@ -96,8 +95,8 @@ var app1_gere0018 = {
         if(url == null){
             //home page first call
             pages[0].className = "activePage";
-//            document.pages.scrollTop = 0;
-//            console.log
+            document.pages[0].scrollTop = 0;
+
             history.replaceState(null, null, "#home");
         }else{
             //loop through pages
