@@ -100,10 +100,9 @@ var app1_gere0018 = {
         }else{
             //loop through pages
             for(var i=0; i < numPages; i++){
-                //for the selected page to become active page
+                //In Page:for the selected page to become active page
               if(pages[i].id == url){
-                  pages[i].className = "activePage";
-                  pages[i].classList.add("pt-page-moveFromBottomFade");
+                  pages[i].className = "activePage pt-page-rotateInNewspaper pt-page-delay500";
                   window.scrollTo( 0, 0 );
                   //making vertical menu disapper when we select a tab.
                   if(verticalMenu.className == "verticalMenu OpenverticalMenu"){
@@ -118,16 +117,15 @@ var app1_gere0018 = {
 
                 history.pushState(null, null, "#" + url);
               }else{
-                  //for the other pages that are was active and will be replaced
+                  //Out Page:for the other page that was active and will be replaced
                   var classes = pages[i].getAttribute("class");
                   if (classes && (-1 !== classes.indexOf("activePage"))){
-                       pages[i].classList.remove("pt-page-moveFromBottomFade");
-                      pages[i].classList.add("pt-page-rotateFoldTop");
+                       pages[i].className = "activePage pt-page-rotateOutNewspaper";
                     setTimeout(function(pg){
                        pg.classList.remove("activePage");
-                       pg.classList.remove("pt-page-rotateFoldTop");
-                        }, 700, pages[i]);
-                    }
+                       pg.classList.remove("pt-page-rotateOutNewspaper");
+                        }, 1000, pages[i]);
+                   }
                 }
             }
 

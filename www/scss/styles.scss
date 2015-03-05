@@ -14,7 +14,7 @@ html {
 }
 P{
     font-family: "Garamond", sans-serif;
-    font-size:1.4rem;
+     font-size: 1.2rem;
     color: $text;
 }
 
@@ -38,10 +38,6 @@ body{
 	position: relative;
 
 }
-    //if menu is open and screen width increases(ex: orientation change),body push should go back to normal, not only vertical menu.
-//    @media screen and (min-width:500px){
-//        left:0;
-//    }
 
 // Vertical Navigation styles **********************************************
 .verticalMenu {
@@ -49,11 +45,12 @@ body{
     width: 175px;
     height: 100%;
     right: -175px;
-	top: 4rem;
+	top: 0;
 	z-index: 900;
     -webkit-transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
 	transition: all 0.5s ease;
+    padding-top: 4rem;
     a {
 	color: $text;
     background-color: $body;
@@ -81,19 +78,52 @@ body{
     background-color: $body;
     }
 
+
+
+//Page Layout***********************************************************
+//Required properties for page transitions
+#pageWrapper{
+	position: relative;
+    left: 0;
+	width: 100%;
+	height: 100%;
+    -webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+}
+#pageWrapper.pageWrapperPushedLeft{
+        left: -175px;
+        footer{
+            left: -175px;
+        }
+       .appTitle{
+           left: -175px;
+        }
+        @media screen and (min-width:500px){
+        left:0;
+            footer{
+            left: 0;
+        }
+       .appTitle{
+           left: 0;
+        }
+        }
+    }
+
 //Header*******************************************************************
 .appTitle{
     position: fixed;
     background-color: $header;
-    box-sizing: border-box;
-    padding: 0.5rem;
     width: 100%;
     left: 0;
+    top:0;
     height: 4rem;
     -webkit-transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
 	transition: all 0.5s ease;
     h1{
+        box-sizing: border-box;
+        padding-top: 1rem;
         text-align: center;
         font-family: "Georgia", cursive;
         font-size: 1.7rem;
@@ -136,9 +166,11 @@ body{
 //Main Naviguation bar/menu styles **************************************************
 .navBar{
     position: fixed;
-    top:auto;
+    width: 100%;
+    top: 4rem;
     display: none;
     height:3rem;
+
     ul{
         list-style: none;
         margin: 0;
@@ -210,41 +242,18 @@ svg{
             }
     }
 
-//Page Layout***********************************************************
-//Required properties for page transitions
-#pageWrapper{
-	position: relative;
-    left: 0;
-	width: 100%;
-	height: 100%;
-    -webkit-transition: all 0.5s ease;
-	-moz-transition: all 0.5s ease;
-	transition: all 0.5s ease;
-}
-#pageWrapper.pageWrapperPushedLeft{
-        left: -175px;
-        footer{
-            left: -175px;
-        }
-       .appTitle{
-           left: -175px;
-
-        }
-    }
-
 //All Pages
 [data-role = "page"]{
     color: $text;
     box-sizing: border-box;
     background-color: $page;
     padding: 1rem;
-    padding-bottom: 60px;
     margin: 0rem;
     //for page transition
     position:absolute;
     width:100%;
 	height: 100%;
-    top: 4rem;
+    top: 7rem;
 	left: 0;
 	visibility: hidden;
     -webkit-backface-visibility: hidden;
@@ -260,8 +269,7 @@ svg{
 	transform-style: preserve-3d;
 
     h2{
-        font-weight: 150;
-        padding: 0.5rem;
+        padding-bottom: 0.5rem;
         font-size: 1.5rem;
         font-family: "Garamond", sans-serif;
     }
@@ -269,7 +277,7 @@ svg{
 //Active pages
 [data-role = "page"].activePage{
     visibility: visible;
-
+//    background-color: blue;
     z-index: 1;
 }
 //Location Page*********************************************
@@ -304,7 +312,7 @@ svg{
       width: 100%;
       left: 0;
       bottom: 0;
-      height: 60px;
+      height: 3rem;
       z-index: 1000;
      -webkit-transition: all 0.5s ease;
 	-moz-transition: all 0.5s ease;
