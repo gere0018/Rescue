@@ -3,6 +3,7 @@ var app1_gere0018 = {
     numPages:0,
     links:[],
     numLinks:0,
+    pageWrapper: "",
     toggleMenuIcon:"",
     verticalMenu: "",
     initialize: function() {
@@ -84,9 +85,9 @@ var app1_gere0018 = {
         //change toggle menu icon to an x shape when clicked
         toggleMenuIcon.classList.toggle("x-toggle-menu");
         verticalMenu = document.querySelector(".verticalMenu");
-        //change class of body to allow the push transition.
-        document.body.classList.toggle("pushMenuToLeft");
-       verticalMenu.classList.toggle("OpenverticalMenu");
+        pageWrapper = document.querySelector("#pageWrapper");
+        pageWrapper.classList.toggle("pageWrapperPushedLeft");
+        verticalMenu.classList.toggle("OpenverticalMenu");
     },
 
     //Deal with history API and switching divs
@@ -94,20 +95,20 @@ var app1_gere0018 = {
         if(url == null){
             //home page first call
             pages[0].className = "activePage";
-            window.scrollTo(0, 0);
+            document.pages[0].scrollTop = 0;
             history.replaceState(null, null, "#home");
         }else{
             //loop through pages
             for(var i=0; i < numPages; i++){
+                //In Page:for the selected page to become active page
               if(pages[i].id == url){
-                  pages[i].className = "activePage";
-                  pages[i].classList.add("pt-page-moveFromBottomFade");
+                  pages[i].className = "activePage pt-page-rotateInNewspaper pt-page-delay500";
                   window.scrollTo( 0, 0 );
                   //making vertical menu disapper when we select a tab.
-                  verticalMenu = document.querySelector("#verticalMenu");
                   if(verticalMenu.className == "verticalMenu OpenverticalMenu"){
-                      verticalMenu.classList.remove("OpenverticalMenu");                                    document.body.classList.toggle("pushMenuToLeft");
+                      verticalMenu.classList.toggle("OpenverticalMenu");
                       toggleMenuIcon.classList.toggle("x-toggle-menu");
+                      pageWrapper.classList.toggle("pageWrapperPushedLeft");
                   }
 
                   if(pages[i].id == "location"){
@@ -116,15 +117,15 @@ var app1_gere0018 = {
 
                 history.pushState(null, null, "#" + url);
               }else{
+                  //Out Page:for the other page that was active and will be replaced
                   var classes = pages[i].getAttribute("class");
                   if (classes && (-1 !== classes.indexOf("activePage"))){
-                       pages[i].classList.remove("pt-page-moveFromBottomFade");
-                      pages[i].classList.add("pt-page-rotateFoldTop");
+                       pages[i].className = "activePage pt-page-rotateOutNewspaper";
                     setTimeout(function(pg){
                        pg.classList.remove("activePage");
-                       pg.classList.remove("pt-page-rotateFoldTop");
-                        }, 700, pages[i]);
-                    }
+                       pg.classList.remove("pt-page-rotateOutNewspaper");
+                        }, 1000, pages[i]);
+                   }
                 }
             }
 
