@@ -94,17 +94,19 @@ var app1_gere0018 = {
     loadPage:function ( url ){
         if(url == null){
             //home page first call
-            pages[0].className = "activePage";
-            document.pages[0].scrollTop = 0;
+            pages[0].className = "activePage button";
+            history.pushState(null, null, "#home");
+            setTimeout(function(){
+                window.scrollTo(0,0);
+            },100);
 
-            history.replaceState(null, null, "#home");
         }else{
             //loop through pages
             for(var i=0; i < numPages; i++){
                 //In Page:for the selected page to become active page
               if(pages[i].id == url){
                   pages[i].className = "activePage pt-page-rotateInNewspaper pt-page-delay500";
-                  window.scrollTo( 0, 0 );
+
                   //making vertical menu disapper when we select a tab.
                   if(verticalMenu.className == "verticalMenu OpenverticalMenu"){
                       verticalMenu.classList.toggle("OpenverticalMenu");

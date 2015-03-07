@@ -1,5 +1,5 @@
 var app1_gere0018 = {
-    page:[],
+    pages:[],
     numPages:0,
     links:[],
     numLinks:0,
@@ -37,7 +37,6 @@ var app1_gere0018 = {
        toggleMenuIcon.addEventListener("click", app1_gere0018.showMenu);
 
        pages = document.querySelectorAll('[data-role="page"]');
-        console.log("pages are:" + pages);
 	   numPages = pages.length;
 	   links = document.querySelectorAll(".button");
 	   numLinks = links.length;
@@ -95,17 +94,19 @@ var app1_gere0018 = {
     loadPage:function ( url ){
         if(url == null){
             //home page first call
-            pages[0].className = "activePage";
-//            document.pages.scrollTop = 0;
-//            console.log
-            history.replaceState(null, null, "#home");
+            pages[0].className = "activePage button";
+            history.pushState(null, null, "#home");
+            setTimeout(function(){
+                window.scrollTo(0,0);
+            },100);
+
         }else{
             //loop through pages
             for(var i=0; i < numPages; i++){
                 //In Page:for the selected page to become active page
               if(pages[i].id == url){
                   pages[i].className = "activePage pt-page-rotateInNewspaper pt-page-delay500";
-                  window.scrollTo( 0, 0 );
+
                   //making vertical menu disapper when we select a tab.
                   if(verticalMenu.className == "verticalMenu OpenverticalMenu"){
                       verticalMenu.classList.toggle("OpenverticalMenu");
