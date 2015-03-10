@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="ca.edumedia.gere0018.rescueApp" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Rescue</name>
+    <name>gere0018-Rescue</name>
     <description>
         An emergency application that allows users to call their emergency contacts in case of danger.
     </description>
-    <author email="gere0018@algonquinlive.com" href="https://github.com/gere0018/webapp1">
+    <author email="gere0018@algonquinlive.com" href="https://github.com/gere0018/rescue">
        Nehmat Gereige
     </author>
     <content src="index.html" />
